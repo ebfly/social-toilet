@@ -1,5 +1,16 @@
-<div class='title-contents'>
+<%= render "shared/header" %>
+<div class='main'>  
+  <div class='title-contents'>
     <h2 class='service-title'>
-      渡部を許すな！！
     </h2>
+  </div>
 </div>
+
+<%# 投稿一覧 %>
+ 
+<%# 投稿一覧 %>
+
+<%= link_to('/toilet/new', class: 'toilet-btn') do %>
+  <span class='toilet-btn-text'>Toileetする</span>
+<% end %>
+<%= render "shared/footer" %>

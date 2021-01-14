@@ -6,6 +6,7 @@ class CreateToilets < ActiveRecord::Migration[6.0]
       t.integer     :condition_id,  null:false
       t.integer     :number_id,     null:false
       t.integer     :multi_id,      null:false
+      t.text        :text
       t.references  :user,          null:false, foreign_key: true
       t.timestamps
     end

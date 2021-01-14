@@ -1,0 +1,33 @@
+.login-btn {
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
+.login-red-btn {
+  width: 100%;
+  background: #afeeee;
+  border: 1px solid #afeeee;
+  color: #0000cd;
+  line-height: 48px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.login-flash-message {
+  text-align: center;
+  color: #afeeee;
+}
+
+.login-google-btn {
+  margin-top: 50px;
+  margin: 0 auto;
+  width: 100%;
+  background: #afeeee;
+  border: 1px solid #afeeee;
+  line-height: 48px;
+  font-size: 14px;
+  cursor: pointer;
+  text-align: center;
+  color: #0000cd;
+}

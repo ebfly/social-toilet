@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 2021_01_12_034105) do
     t.integer "condition_id", null: false
     t.integer "number_id", null: false
     t.integer "multi_id", null: false
+    t.text "text"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
