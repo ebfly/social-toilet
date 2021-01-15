@@ -1,0 +1,16 @@
+ja:
+ activerecord:
+   attributes:
+     user:
+       nickname: ニックネーム
+       city: 市町村
+       prefecture_id: 都道府県
+     toilet:
+       name: タイトル名
+       prefecture_id: 都道府県
+       category_id: カテゴリー
+       condition_id: トイレの状態
+       number_id: 個室の数
+       multi_id: 設備内容
+       text: トイレの詳細説明
+       image: 画像
