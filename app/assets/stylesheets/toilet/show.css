@@ -1,6 +1,6 @@
 /* 商品の概要 */
 
-.item-show {
+.toilet-show {
   background-color: #f8f8f8;
   width: 100vw;
   display: flex;
@@ -9,7 +9,7 @@
   padding: 5vh 0;
 }
 
-.item-box {
+.toilet-box {
   background-color: #FFF;
   width: 70vw;
   min-width: 1200px;
@@ -19,43 +19,43 @@
   align-items: center;
 }
 
-.item-box>.name {
+.toilet-box>.name {
   text-align: center;
   font-weight: bold;
   font-size: 25px;
 }
 
-.item-box-img {
+.toilet-box-img {
   height: 50vh;
-  width: 60vw;
-  min-height: 500px;
+  width: 50vw;
+  min-height: 100px;
   background-color: rgb(205, 202, 202);
   object-fit: contain;
 }
 
-.item-price-box {
+.toilet-prefecture-box {
   margin: 25px 0px;
   display: flex;
   align-items: center;
   flex-direction: column;
 }
 
-.item-price-box>.item-price {
+.toilet-prefecture-box>.toilet-prefecture {
   font-size: 4vh;
   font-weight: bold;
 }
 
-.item-price-box>.item-postage {
+.toilet-prefecture-box>.toilet-postage {
   font-size: 16px;
 }
 
 
-.item-red-btn {
+.toilet-edit-btn {
   text-align: center;
-  background-color: #ea352d;
+  background:#afeeee;
   font-size: 24px;
   font-weight: bold;
-  color: #FFF;
+  color: #0000cd;
   margin: 20px 0px;
   padding: 2vh 10vw;
 }
@@ -64,7 +64,7 @@
   font-size: 20px;
 }
 
-.item-destroy {
+.toilet-destroy {
   background-color: lightgray;
   text-align: center;
   font-size: 24px;
@@ -73,7 +73,7 @@
   padding: 2vh 10vw;
 }
 
-.item-explain-box {
+.toilet-explain-box {
   font-size: 18px;
   margin: 40px 0px;
 }
@@ -83,7 +83,7 @@
   width: 100%;
 }
 
-.detail-item {
+.detail-toilet {
   width: 20%;
   background-color: #eee;
   border: 1px solid #dedede;
@@ -102,22 +102,6 @@
   display: flex;
   justify-content: space-between;
   position: relative;
-}
-
-.favorite-btn {
-  border-radius: 40px;
-  width: 15vw;
-  min-width: 200px;
-  color: rgb(249, 75, 0);
-  border: 2px solid #ffb340;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-right: 20px;
-}
-
-.favorite-star-icon {
-  margin-right: 5px;
 }
 
 .report-btn {
@@ -188,19 +172,4 @@
   justify-content: space-between;
   width: 50vw;
 
-}
-
-.change-item-btn {
-  font-size: 30px;
-  text-decoration: none;
-  color: #3CCACE;
-}
-
-.another-item {
-  display: block;
-  margin: 30px 0px 8px;
-  color: #3CCACE;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 23px;
 }
