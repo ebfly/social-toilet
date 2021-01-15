@@ -1,4 +1,4 @@
-class Genre < ActiveHash::Base
+class Number < ActiveHash::Base
   #個室の数
   self.data = [
     { id: 1, name: '--' },

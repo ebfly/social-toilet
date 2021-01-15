@@ -12,16 +12,15 @@
   line-height: 48px;
   font-size: 14px;
   cursor: pointer;
+  margin-bottom: 30px;
 }
 
 .login-flash-message {
   text-align: center;
-  color: #afeeee;
+  color: red;
 }
 
 .login-google-btn {
-  margin-top: 50px;
-  margin: 0 auto;
   width: 100%;
   background: #afeeee;
   border: 1px solid #afeeee;

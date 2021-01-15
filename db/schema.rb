@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 2021_01_12_034105) do
 
   create_table "toilets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
+    t.integer "prefecture_id", null: false
     t.integer "category_id", null: false
     t.integer "condition_id", null: false
     t.integer "number_id", null: false
