@@ -1,7 +1,7 @@
-<h2>Sign up</h2>
+<%= render "shared/second-header"%>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+  <%= render 'shared/error_messages', model: f.object %>
 
   <div class="form-group">
     <div class='form-text-wrap'>
@@ -21,20 +21,6 @@
   <%if @sns_id.present? %>
    <%= hidden_field_tag :sns_auth, true %>
   <% else %>
-   <div class="field">
-     <%= f.label :password %>
-     <% @minimum_password_length %>
-     <em>(<%= @minimum_password_length %> characters minimum)</em>
-     <br />
-     <%= f.password_field :password, autocomplete: "new-password" %>
-   </div>
-
-   <div class="field">
-     <%= f.label :password_confirmation %><br />
-     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-   </div>
- <% end %>
-
   <div class="form-group">
     <div class='form-text-wrap'>
       <label class="form-text">パスワード</label>
@@ -50,7 +36,7 @@
     </div>
     <%= f.password_field :password_confirmation, class:"input-default", id:"password-confirmation", placeholder:"同じパスワードを入力して下さい" %>
   </div>
-
+ <% end %>
   <div class="form-group">   
     <div class='form-text-wrap'>
       <label class="form-text">都道府県</label>
@@ -67,9 +53,13 @@
     <%= f.text_area :city, class:"input-default", id:"city", placeholder:"例) 新宿区" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
+   <div class='register-btn'>
+    <%= f.submit "会員登録" ,class:"register-red-btn" %>
+  </div>
+
+  <div class="login-google-btn">
+    <%= link_to 'Googleで登録', user_google_oauth2_omniauth_authorize_path, method: :post %>
   </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<%= render "shared/second-footer"%>
