@@ -1,0 +1,70 @@
+<%= render "shared/header" %>
+
+<%# 投稿概要 %>
+<div class="toilet-show">
+  <div class="toilet-box">
+    <h2 class="name">
+      <%= @toilet.name %>
+    </h2>
+    <div class='toilet-img-content'>
+      <%= image_tag @toilet.image.variant(resize: '300x300') ,class:"toilet-box-img" if @toilet.image.attached? %>
+    </div>
+    <div class="toilet-prefecture-box">
+      <span class="toilet-prefecture">
+        <%= @toilet.prefecture.name%>
+      </span>
+    </div>
+
+    <% if current_user.id == @toilet.user_id %>
+      <%= link_to '編集', edit_toilet_path(@toilet.id), method: :get, class: "toilet-edit-btn" %>
+      <p class='or-text'>or</p>
+      <%= link_to '削除',  toilet_path(@toilet.id), method: :delete, class:'toilet-destroy' %>
+    <% end %>
+
+    <div class="toilet-explain-box">
+      <span><%= @toilet.text %></span>
+    </div>
+    <table class="detail-table">
+      <tbody>
+        <tr>
+          <th class="detail-toilet">出品者</th>
+          <td class="detail-value"><%= @toilet.user.nickname %></td>
+        </tr>
+        <tr>
+          <th class="detail-toilet">カテゴリー</th>
+          <td class="detail-value"><%= @toilet.category.name %></td>
+        </tr>
+        <tr>
+          <th class="detail-toilet">トイレの状態</th>
+          <td class="detail-value"><%= @toilet.condition.name %></td>
+        </tr>
+        <tr>
+          <th class="detail-toilet">個室の数</th>
+          <td class="detail-value"><%= @toilet.number.name %></td>
+        </tr>
+        <tr>
+          <th class="detail-toilet">設備内容</th>
+          <td class="detail-value"><%= @toilet.multi.name %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <%# /投稿概要 %>
+
+  <div class="comment-box">
+    <form>
+      <textarea class="comment-text"></textarea>
+      <p class="comment-warn">
+        アンジャッシュ渡部のことを考え丁寧なコメントを心がけましょう。
+        <br>
+        不快な言葉遣いなどは児嶋や退会処分となることがあります。
+      </p>
+      <button type="submit" class="comment-btn">
+        <%#= image_tag "comment.png" ,class:"comment-flag-icon" ,width:"20",height:"25"%>
+        <span>コメントする<span>
+      </button>
+    </form>
+  </div>
+</div>
+
+<%= render "shared/footer" %>

@@ -1,5 +1,5 @@
 class ToiletsController < ApplicationController
-  before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :set_toilet, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
@@ -18,6 +18,33 @@ class ToiletsController < ApplicationController
       render :new
     end
   end
+
+  def show
+  end
+
+  def edit
+    unless current_user.id == @toilet.user_id
+      redirect_to root_path
+    end
+  end
+
+  def update
+    if @toilet.update(toilet_params)
+      redirect_to toilet_path
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    if current_user.id == @toilet.user_id
+      @toilet.destroy 
+      redirect_to root_path, notice: "Comleted to delete"
+    else
+      render :show, alert: "Failed to delete"
+    end
+  end
+
 
   private
   def toilet_params

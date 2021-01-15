@@ -1,0 +1,114 @@
+<div class="toilets-contents">
+  <header class="toilets-header">
+    <%= link_to image_tag('socialtoilet-logo.jpg' , size: '185x50'), root_path %>
+  </header>
+  <div class="toilets-main">
+    <h2 class="toilets-title">トイレの情報を入力</h2>
+    <%= form_with(model: @toilet, local: true) do |f| %>
+    <%= render 'shared/error_messages', model: f.object %>
+
+    <%# 投稿画像 %>
+    <div class="img-upload">
+      <div class="weight-bold-text">
+        投稿画像
+      </div>
+      <div class="click-upload">
+        <p>
+          クリックしてファイルをアップロード
+        </p>
+        <%= f.file_field :image, id:"item-image" %>
+        <%= image_tag @toilet.image.variant(resize: '300x300') ,class:"toilet-img" if @toilet.image.attached? %>
+      </div>
+    </div>
+    <%# /投稿画像 %>
+    <%# タイトル %>
+    <div class="new-toilets">
+      <div class="weight-bold-text">
+        タイトル名
+        <span class="indispensable">必須</span>
+        <%= f.text_area :name, class:"toilets-text", id:"toilet-name", placeholder:"タイトル名 例)大阪市中央区の駅近トイレ（必須 40文字まで)", maxlength:"40" %>
+      </div>
+    </div>
+    <%# /タイトル %>
+    <%# トイレの詳細 %>
+    <div class="toilet-detail">
+      <div class="weight-bold-text">〜トイレの詳細〜</div>
+        <div class="form">
+          <div class="weight-bold-text">
+            地域
+            <span class="indispensable">必須</span>
+          </div>
+          <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}, {class:"select-box", id:"toilet-prefecture"}) %>
+        </div>
+      </div>
+      <div class="form">
+        <div class="weight-bold-text">
+          カテゴリー
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"select-box", id:"toilet-category"}) %>
+        <div class="weight-bold-text">
+          トイレの状態
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.collection_select(:condition_id, Condition.all, :id, :name, {}, {class:"select-box", id:"toilet-status"}) %>
+      </div>
+      <div class="form">
+        <div class="weight-bold-text">
+          個室の数
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.collection_select(:number_id, Number.all, :id, :name, {}, {class:"select-box", id:"toilet-number"}) %>
+        <div class="weight-bold-text">
+          設備内容
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.collection_select(:multi_id, Multi.all, :id, :name, {}, {class:"select-box", id:"toilet-multi"}) %>
+        <div class="toilet-explain">
+          <div class="weight-bold-text">
+            トイレの詳細説明
+            <span class="indispensable">必須</span>
+          </div>
+          <%= f.text_area :text, class:"toilets-text", id:"toilet-info", placeholder:"説明内容（必須 1,000文字まで）（どこにあるのか、注意点など）例）JR大阪駅近くの百貨店内のトイレです。" ,rows:"7" ,maxlength:"1000" %>
+        </div>
+      </div>
+    <%# /商品の詳細 %>
+    <%# 注意書き %>
+    <div class="caution">
+      <p class="sentence">
+        <a href="#">禁止されている出品、</a>
+        <a href="#">行為</a>
+        を必ずご確認ください。
+      </p>
+      <p class="sentence">
+        またブランド品でシリアルナンバー等がある場合はご記載ください。
+        <a href="#">偽ブランドの販売</a>
+        は犯罪であり処罰される可能性があります。
+      </p>
+      <p class="sentence">
+        また、出品をもちまして
+        <a href="#">加盟店規約</a>
+        に同意したことになります。
+      </p>
+    </div>
+    <%# /注意書き %>
+    <%# 下部ボタン %>
+    <div class="sell-btn-contents">
+      <%= f.submit "投稿する", class:"sell-btn" %>
+      <%=link_to 'もどる', root_path, class:"back-btn" %>
+    </div>
+    <%# /下部ボタン %>
+    </div>
+  </div>
+  <% end %>
+  <footer class="toilets-footer">
+    <ul class="menu">
+      <li><a href="#">プライバシーポリシー</a></li>
+      <li><a href="#">利用規約</a></li>
+      <li><a href="#">特定商取引に関する表記</a></li>
+    </ul>
+    <div class="toilets-footer-logo">
+    <%= link_to image_tag('socialtoilet-logo.jpg' , size: '185x50'), root_path %>
+    </div>
+  </footer>
+</div>
