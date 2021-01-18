@@ -17,8 +17,8 @@
           クリックしてファイルをアップロード
         </p>
         <%= f.file_field :image, id:"toilet-image" %>
-        <%= image_tag @toilet.image.variant(resize: '300x300') ,class:"toilet-img" if @toilet.image.attached? %>
-        <div id="image-list"></div>
+        <%= image_tag @toilet.image.variant(resize: '30x30') ,class:"toilet-img" if @toilet.image.attached? %>
+        <div class="image-list" id="image-list"></div>
       </div>
     </div>
     <%# /投稿画像 %>
