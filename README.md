@@ -19,25 +19,46 @@
 # 課題解決
 
 # 機能一覧
+ * ユーザー機能
+  * ユーザー新規登録・ログイン機能
+  * SNS認証ログイン(Google)
+  * ゲストログイン
+  * ユーザー情報編集機能
+ * 投稿機能
+  * 新規投稿機能(画像投稿用にGem: ActiveStorageを使用)
+  * 投稿一覧表示
+  * 投稿編集機能
+  * 投稿削除機能
+ * テスト機能
+  * RSpec/Rubocopテスト機能
+  * エラーメッセージの日本語化 
+  * モデルに対するバリデーション・正規表現
 
 # 追加予定機能
+ * 検索機能
+ * 
+ * 
 
 # ローカルでの動作方法
-git clone https://github.com/ebfly/social-toilet.git
-cd social-toilet
-bundle install
-rails db:create
-rails db:migrate
-rails s
+ * git clone https://github.com/ebfly/social-toilet.git
+ * cd social-toilet
+* bundle install
+* rails db:create
+* rails db:migrate
+* rails s
 
-# 開発環境
-VScode
-Ruby 2.6.5
-Rails 6.0.0
-mysql2 0.4.4
-JavaScript
-gem 
-heroku 
+# 使用技術
+* VScode
+* Ruby 2.6.5
+* Rails 6.0.0
+* JavaScript
+* mysql 5.6.50
+* Linux
+* Nginx(Web Sever)
+* Git/GitHub(pull request,Issue 等による擬似チーム開発)
+* Capistrano
+* AWS EC2 (Amazon Linux2)/RDS(MariaDB)/S3/IAM
+* 
 
 # DB設計
 ## users テーブル
