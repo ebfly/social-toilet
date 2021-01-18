@@ -12,6 +12,7 @@ if (document.URL.match( /new/ ) || document.URL.match( /edit/ )) {
       // 表示する画像を生成
       const blobImage = document.createElement('img')
       blobImage.setAttribute('src', blob)
+      blobImage.setAttribute('class', "preview-image")
 
       // ファイル選択ボタンを生成
       const inputHTML = document.createElement('input')

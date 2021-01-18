@@ -23,6 +23,7 @@ class User < ApplicationRecord
     { user: user, sns: sns }
   end
 
+
   with_options presence: true do
     validates :nickname, length: { maximum: 40 }
     validates :email, :city
@@ -35,4 +36,13 @@ class User < ApplicationRecord
    #各項目の選択が「---」の時は保存できない
   validates :prefecture_id, numericality: { other_than: 1 }
 
+  def self.guest
+    find_or_create_by!(email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.nickname = "Guestさん"
+      user.prefecture_id = 14
+      user.city = "Shinjuku"
+      #user.confirmed_at = Time.now
+    end
+  end
 end
