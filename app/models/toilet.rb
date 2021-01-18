@@ -7,7 +7,7 @@ class Toilet < ApplicationRecord
   belongs_to :number 
   belongs_to :multi
 
-  has_one_attached :image
+  has_many_attached :images
 
   with_options presence: true do
     validates :name, length: { maximum: 40 }

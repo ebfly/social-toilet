@@ -7,8 +7,11 @@
       <%= @toilet.name %>
     </h2>
     <div class='toilet-img-content'>
-      <%= image_tag @toilet.image.variant(resize: '300x300') ,class:"toilet-box-img" if @toilet.image.attached? %>
+      <% @toilet.images.each do |image|%>
+        <%= image_tag image ,class:"toilet-box-img"%>
+      <% end %>
     </div>
+
     <div class="toilet-prefecture-box">
       <span class="toilet-prefecture">
         <%= @toilet.prefecture.name%>
