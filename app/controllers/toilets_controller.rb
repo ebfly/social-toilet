@@ -8,6 +8,7 @@ class ToiletsController < ApplicationController
 
   def new
     @toilet = Toilet.new
+    @toilet.build_map
   end
 
   def create
@@ -48,7 +49,7 @@ class ToiletsController < ApplicationController
 
   private
   def toilet_params
-    params.require(:toilet).permit(:name, :prefecture_id, :category_id, :condition_id, :number_id, :multi_id, :text, images: []).merge(user_id: current_user.id)
+    params.require(:toilet).permit(:name, :prefecture_id, :category_id, :condition_id, :number_id, :multi_id, :text, images: [], map_attributes: [:address]).merge(user_id: current_user.id)
   end
 
   def set_toilet
