@@ -1,5 +1,4 @@
 class Toilet < ApplicationRecord
-  before_save :geocode_full_address
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :user
   belongs_to :prefecture
@@ -7,8 +6,6 @@ class Toilet < ApplicationRecord
   belongs_to :condition
   belongs_to :number 
   belongs_to :multi
-  has_one :map, dependent: :destroy
-  accepts_nested_attributes_for :map
 
   has_many_attached :images
 
