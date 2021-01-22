@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_19_052341) do
+ActiveRecord::Schema.define(version: 2021_01_12_034105) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -33,16 +33,6 @@ ActiveRecord::Schema.define(version: 2021_01_19_052341) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "maps", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "address"
-    t.float "latitude"
-    t.float "longitude"
-    t.bigint "toilet_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["toilet_id"], name: "index_maps_on_toilet_id"
-  end
-
   create_table "sns_credentials", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "provider"
     t.string "uid"
@@ -60,6 +50,9 @@ ActiveRecord::Schema.define(version: 2021_01_19_052341) do
     t.integer "number_id", null: false
     t.integer "multi_id", null: false
     t.text "text"
+    t.string "address", null: false
+    t.float "latitude", null: false
+    t.float "longitude", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -82,7 +75,6 @@ ActiveRecord::Schema.define(version: 2021_01_19_052341) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "maps", "toilets"
   add_foreign_key "sns_credentials", "users"
   add_foreign_key "toilets", "users"
 end

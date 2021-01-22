@@ -1,6 +1,6 @@
 <div class="toilets-contents">
   <header class="toilets-header">
-    <%= link_to image_tag('socialtoilet-logo.jpg' , size: '185x50'), root_path %>
+    <%= link_to image_tag('socialtoilet-logo.jpg' , size: '185x100'), root_path %>
   </header>
   <div class="toilets-main">
     <h2 class="toilets-title">トイレの情報を入力</h2>
@@ -72,6 +72,59 @@
         </div>
       </div>
     <%# /商品の詳細 %>
+  <%# GoogleMapの表示%>
+      <input type="hidden" name="map[address]" id="hidden_address">
+      <input id="address" type="textbox" value="">
+      <input type="button" value="検索" onclick="codeAddress()" class="indispensable">
+      <div id='map'></div>
+      <style>
+        #map {
+          height: 600px;
+          width: 600px;
+        }
+      </style>
+
+      <script>
+        let map
+        let geocoder
+        let marker
+
+        function initMap() {
+          geocoder = new google.maps.Geocoder()
+          // デフォルト位置は東京
+          map = new google.maps.Map(document.getElementById('map'), {
+            center: {
+              lat: 35.681,
+              lng: 139.767
+            },
+            zoom: 12,
+          }); 
+        }
+        function codeAddress() {
+          let inputAddress = document.getElementById('address').value;
+
+          geocoder.geocode({
+            'address': inputAddress
+          }, function (results, status) {
+            if (status == 'OK') {
+              map.setCenter(results[0].geometry.location);
+
+              var marker = new google.maps.Marker({
+                map: map,
+                position: results[0].geometry.location
+              });
+              // 検索値を隠しデータとしてセット
+              let hidden_address = document.getElementById('hidden_address');
+              hidden_address.setAttribute("value", inputAddress);
+            } else {
+              alert('Geocode was not successful for the following reason: ' + status);
+            }
+          });
+        }
+      </script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API'] %>&callback=initMap" async defer>
+      </script>
+      <%# /GoogleMapの表示%>
     <%# 注意書き %>
     <div class="caution">
       <p class="sentence">
@@ -91,13 +144,8 @@
   </div>
   <% end %>
   <footer class="toilets-footer">
-    <ul class="menu">
-      <li><a href="#">プライバシーポリシー</a></li>
-      <li><a href="#">利用規約</a></li>
-      <li><a href="#">特定商取引に関する表記</a></li>
-    </ul>
     <div class="toilets-footer-logo">
-    <%= link_to image_tag('socialtoilet-logo.jpg' , size: '185x50'), root_path %>
+    <%= link_to image_tag('socialtoilet-logo.jpg' , size: '185x100'), root_path %>
     </div>
   </footer>
 </div>

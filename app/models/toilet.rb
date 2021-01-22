@@ -1,4 +1,7 @@
 class Toilet < ApplicationRecord
+  geocoded_by :address
+  after_validation :geocode
+  
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :user
   belongs_to :prefecture
@@ -10,6 +13,7 @@ class Toilet < ApplicationRecord
   has_many_attached :images
 
   with_options presence: true do
+    validates :latitude, :longitude
     validates :name, length: { maximum: 40 }
     validates :text, length: { maximum: 1000 }
   end
