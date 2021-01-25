@@ -16,7 +16,7 @@
   <% if @toilets.present? %>
     <% @toilets.each do |toilet| %>
       <li class='list'>
-        <%= link_to toilet_path(toilet.id) do %>
+        <%= link_to toilet_path(toilet.id), method: :get do %>
           <div class='toilet-img-content'>
             <%= image_tag toilet.images[0], class: 'toilet-img' %>
           </div>

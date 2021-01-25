@@ -4,7 +4,8 @@
   </header>
   <div class="toilets-main">
     <h2 class="toilets-title">トイレの情報を入力</h2>
-    <%= form_with(model: @toilet, local: true) do |f| %>
+  <%= form_with(model: @toilet, local: true) do |f| %>
+    <input type="hidden" name="map[address]" id="hidden_address">
     <%= render 'shared/error_messages', model: f.object %>
     <%# 投稿画像 %>
     <div class="img-upload">
@@ -71,11 +72,18 @@
           <%= f.text_area :text, class:"toilets-text", id:"toilet-info", placeholder:"説明内容（必須 1,000文字まで）（どこにあるのか、注意点など）例）JR大阪駅近くの百貨店内のトイレです。" ,rows:"7" ,maxlength:"1000" %>
         </div>
       </div>
-    <%# /商品の詳細 %>
-  <%# GoogleMapの表示%>
-      <input type="hidden" name="map[address]" id="hidden_address">
-      <input id="address" type="textbox" value="">
-      <input type="button" value="検索" onclick="codeAddress()" class="indispensable">
+      <%# /商品の詳細 %>
+      <%# GoogleMapの表示%>
+      <%= f.label :address, "検索" %>
+        <%= f.text_field :address, id: :address%>
+
+      <input type="button" value="検索" onclick="codeAddress()">
+      <div class="form">
+        <%= f.label :latitude,"緯度" %>
+          <%= f.text_field :latitude,:value =>"緯度", id: :latitude %>
+        <%= f.label :longitude,"経度" %>
+         <%= f.text_field :longitude,:value =>"経度", id: :longitude %>
+      </div>
       <div id='map'></div>
       <style>
         #map {
@@ -83,7 +91,6 @@
           width: 600px;
         }
       </style>
-
       <script>
         let map
         let geocoder
@@ -113,10 +120,16 @@
                 map: map,
                 position: results[0].geometry.location
               });
+
+              //検索した時に緯度経度を入力する
+              document.getElementById('latitude').value = results[0].geometry.location.latitude();
+              document.getElementById('longitude').value = results[0].geometry.location.longitude();
+
               // 検索値を隠しデータとしてセット
               let hidden_address = document.getElementById('hidden_address');
               hidden_address.setAttribute("value", inputAddress);
-            } else {
+            }
+            else {
               alert('Geocode was not successful for the following reason: ' + status);
             }
           });
@@ -125,23 +138,22 @@
       <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API'] %>&callback=initMap" async defer>
       </script>
       <%# /GoogleMapの表示%>
-    <%# 注意書き %>
-    <div class="caution">
-      <p class="sentence">
-        <a href="#">禁止されている投稿、</a>
-        <a href="#">行為</a>
-        を必ずご確認ください。
-      </p>
+      <%# 注意書き %>
+      <div class="caution">
+        <p class="sentence">
+          <a href="#">禁止されている投稿、</a>
+          を必ずご確認ください。
+        </p>
+      </div>
+      <%# /注意書き %>
+      <%# 下部ボタン %>
+      <div class="sell-btn-contents">
+        <%= f.submit "投稿する", class:"sell-btn" %>
+        <%=link_to 'もどる', root_path, class:"back-btn" %>
+      </div>
+      <%# /下部ボタン %>
+      </div>
     </div>
-    <%# /注意書き %>
-    <%# 下部ボタン %>
-    <div class="sell-btn-contents">
-      <%= f.submit "投稿する", class:"sell-btn" %>
-      <%=link_to 'もどる', root_path, class:"back-btn" %>
-    </div>
-    <%# /下部ボタン %>
-    </div>
-  </div>
   <% end %>
   <footer class="toilets-footer">
     <div class="toilets-footer-logo">
