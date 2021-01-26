@@ -28,7 +28,8 @@
   * ゲストログイン
   * ユーザー情報編集機能
  * 投稿機能
-  * 新規投稿機能(投稿時にGoogleMapAPIを用いた位置情報詳細を表示・保存),(画像投稿用にGem: ActiveStorageを使用)
+  * 新規投稿機能(投稿時にGoogleMapAPIを用いた位置情報詳細を表示・保存),
+  (画像投稿用にGem: ActiveStorageを使用)
   ![地図表示](https://i.gyazo.com/37a677ce3c2295e385d0236e2b7b4fb3.gif)
   * 投稿詳細表示
   ![保存した投稿・地図表示](https://i.gyazo.com/b046aa41f4d15b5655e5dcf9bda77fc4.gif)
