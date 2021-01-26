@@ -79,10 +79,10 @@
 
       <input type="button" value="検索" onclick="codeAddress()">
       <div class="form">
-        <%= f.label :latitude,"緯度" %>
-          <%= f.text_field :latitude,:value =>"緯度", id: :latitude %>
-        <%= f.label :longitude,"経度" %>
-         <%= f.text_field :longitude,:value =>"経度", id: :longitude %>
+       <%= f.label :latitude %>
+          <%= f.hidden_field :latitude,:value =>"緯度", id: :latitude %>
+        <%= f.label :longitude %>
+         <%= f.hidden_field :longitude,:value =>"経度", id: :longitude %>
       </div>
       <div id='map'></div>
       <style>
