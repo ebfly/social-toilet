@@ -16,7 +16,10 @@
 ・トップページに一覧が表示される
 ・投稿をクリックしたら、トイレの詳細画面へ遷移する
 
-# 課題解決
+# 課題解決・追加したい機能
+  * 都道府県別の投稿検索機能
+  * マイページ表示の実装
+
 
 # 機能一覧
  * ユーザー機能
@@ -25,7 +28,7 @@
   * ゲストログイン
   * ユーザー情報編集機能
  * 投稿機能
-  * 新規投稿機能(画像投稿用にGem: ActiveStorageを使用)
+  * 新規投稿機能(投稿時にGoogleMapAPIを用いた位置情報詳細を表示・保存),(画像投稿用にGem: ActiveStorageを使用)
   * 投稿一覧表示
   * 投稿編集機能
   * 投稿削除機能
@@ -33,11 +36,6 @@
   * RSpec/Rubocopテスト機能
   * エラーメッセージの日本語化 
   * モデルに対するバリデーション・正規表現
-
-# 追加予定機能
- * 検索機能
- * 
- * 
 
 # ローカルでの動作方法
  * git clone https://github.com/ebfly/social-toilet.git
@@ -58,8 +56,7 @@
 * Git/GitHub(pull request,Issue 等による擬似チーム開発)
 * Capistrano
 * AWS EC2 (Amazon Linux2)/RDS(MariaDB)/S3/IAM
-* 
-
+* Google Cloud Platform(GoogleMapAPI)
 # DB設計
 ## users テーブル
 
@@ -87,6 +84,9 @@
 | condition_id    | integer     | null: false                    |
 | useful_id       | integer     | null: false                    |
 | multi_id        | integer     | null: false                    |
+| address         | string      | null: false                    |
+| latitude        | float       | null: false                    |
+| longitude       | float       | null: false                    |
 | user            | references  | null: false,  foreign_key true |
 
   ### Association 
