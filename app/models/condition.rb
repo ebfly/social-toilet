@@ -6,8 +6,6 @@ class Condition < ActiveHash::Base
     { id: 3, name: 'ふつう' },
     { id: 4, name: 'あんまり' },
     { id: 5, name: 'きたない' },
-    { id: 6, name: 'アンジャッシュ渡部' },
-
   ]
 
   include ActiveHash::Associations

@@ -49,18 +49,60 @@
           <th class="detail-toilet">設備内容</th>
           <td class="detail-value"><%= @toilet.multi.name %></td>
         </tr>
+        <tr>
+          <th class="detail-toilet">詳細場所</th>
+          <td class="detail-value"><%= @toilet.address %></td>
+        </tr>
       </tbody>
     </table>
+    <div id='map'></div>
+      <style>
+        #map {
+          height: 600px;
+          width: 600px;
+        }
+      </style>
+      <script type="text/javascript">
+    function initMap() {
+
+        var test ={lat: <%= @toilet.latitude %>, lng: <%= @toilet.longitude %>};
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 12,
+            center: test
+        });
+        var transitLayer = new google.maps.TransitLayer();
+        transitLayer.setMap(map);
+
+        var contentString = '住所：<%= @toilet.address %>';
+        var infowindow = new google.maps.InfoWindow({
+            content: contentString
+        });
+
+        var marker = new google.maps.Marker({
+            position:test,
+            map: map,
+            title: contentString
+        });
+
+        marker.addListener('click', function() {
+            infowindow.open(map, marker);
+        });
+    }
+</script>
+
+      <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API'] %>&callback=initMap" async defer>
+      </script>
+      <%# /GoogleMapの表示%>
+
   </div>
   <%# /投稿概要 %>
-
   <div class="comment-box">
     <form>
       <textarea class="comment-text"></textarea>
       <p class="comment-warn">
-        アンジャッシュ渡部のことを考え丁寧なコメントを心がけましょう。
+        丁寧なコメントを心がけましょう。
         <br>
-        不快な言葉遣いなどは児嶋や退会処分となることがあります。
+        不快な言葉遣いなどは退会処分となることがあります。
       </p>
       <button type="submit" class="comment-btn">
         <%#= image_tag "comment.png" ,class:"comment-flag-icon" ,width:"20",height:"25"%>

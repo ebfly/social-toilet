@@ -39,7 +39,7 @@ class User < ApplicationRecord
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64
-      user.nickname = "Guestさん"
+      user.nickname = "ゲストさん"
       user.prefecture_id = 14
       user.city = "Shinjuku"
       #user.confirmed_at = Time.now

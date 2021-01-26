@@ -1,6 +1,6 @@
 <div class="toilets-contents">
   <header class="toilets-header">
-    <%= link_to image_tag('socialtoilet-logo.jpg' , size: '185x50'), root_path %>
+    <%= link_to image_tag('socialtoilet-logo.jpg' , size: '185x100'), root_path %>
   </header>
   <div class="toilets-main">
     <h2 class="toilets-title">トイレの情報を入力</h2>
@@ -73,6 +73,71 @@
         </div>
       </div>
     <%# /商品の詳細 %>
+    <%# GoogleMapの表示%>
+      <%= f.label :address, "検索" %>
+        <%= f.text_field :address, id: :address%>
+
+      <input type="button" value="検索" onclick="codeAddress()">
+      <div class="form">
+       <%= f.label :latitude %>
+          <%= f.hidden_field :latitude,:value =>"緯度", id: :latitude %>
+        <%= f.label :longitude %>
+         <%= f.hidden_field :longitude,:value =>"経度", id: :longitude %>
+      </div>
+      <div id='map'></div>
+      <style>
+        #map {
+          height: 600px;
+          width: 600px;
+        }
+      </style>
+      <script>
+        let map
+        let geocoder
+        let marker
+
+        function initMap() {
+          geocoder = new google.maps.Geocoder()
+          // デフォルト位置は東京
+          map = new google.maps.Map(document.getElementById('map'), {
+            center: {
+              lat: 35.681,
+              lng: 139.767
+            },
+            zoom: 12,
+          }); 
+        }
+        function codeAddress() {
+          let inputAddress = document.getElementById('address').value;
+
+          geocoder.geocode({
+            'address': inputAddress
+          }, function (results, status) {
+            if (status == 'OK') {
+              map.setCenter(results[0].geometry.location);
+
+              var marker = new google.maps.Marker({
+                map: map,
+                position: results[0].geometry.location
+              });
+
+              //検索した時に緯度経度を入力する
+              document.getElementById('latitude').value = results[0].geometry.location.latitude();
+              document.getElementById('longitude').value = results[0].geometry.location.longitude();
+
+              // 検索値を隠しデータとしてセット
+              let hidden_address = document.getElementById('hidden_address');
+              hidden_address.setAttribute("value", inputAddress);
+            }
+            else {
+              alert('Geocode was not successful for the following reason: ' + status);
+            }
+          });
+        }
+      </script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API'] %>&callback=initMap" async defer>
+      </script>
+      <%# /GoogleMapの表示%>
     <%# 注意書き %>
     <div class="caution">
       <p class="sentence">
@@ -108,7 +173,7 @@
       <li><a href="#">特定商取引に関する表記</a></li>
     </ul>
     <div class="toilets-footer-logo">
-    <%= link_to image_tag('socialtoilet-logo.jpg' , size: '185x50'), root_path %>
+    <%= link_to image_tag('socialtoilet-logo.jpg' , size: '185x100'), root_path %>
     </div>
   </footer>
 </div>

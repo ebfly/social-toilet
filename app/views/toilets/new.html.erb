@@ -1,12 +1,12 @@
 <div class="toilets-contents">
   <header class="toilets-header">
-    <%= link_to image_tag('socialtoilet-logo.jpg' , size: '185x50'), root_path %>
+    <%= link_to image_tag('socialtoilet-logo.jpg' , size: '185x100'), root_path %>
   </header>
   <div class="toilets-main">
     <h2 class="toilets-title">トイレの情報を入力</h2>
-    <%= form_with(model: @toilet, local: true) do |f| %>
+  <%= form_with(model: @toilet, local: true) do |f| %>
+    
     <%= render 'shared/error_messages', model: f.object %>
-
     <%# 投稿画像 %>
     <div class="img-upload">
       <div class="weight-bold-text">
@@ -30,6 +30,7 @@
       </div>
     </div>
     <%# /タイトル %>
+
     <%# トイレの詳細 %>
     <div class="toilet-detail">
       <div class="weight-bold-text">〜トイレの詳細〜</div>
@@ -67,48 +68,87 @@
         <div class="toilet-explain">
           <div class="weight-bold-text">
             トイレの詳細説明
-            <span class="indispensable">必須</span>
           </div>
           <%= f.text_area :text, class:"toilets-text", id:"toilet-info", placeholder:"説明内容（必須 1,000文字まで）（どこにあるのか、注意点など）例）JR大阪駅近くの百貨店内のトイレです。" ,rows:"7" ,maxlength:"1000" %>
         </div>
       </div>
-    <%# /商品の詳細 %>
-    <%# 注意書き %>
-    <div class="caution">
-      <p class="sentence">
-        <a href="#">禁止されている出品、</a>
-        <a href="#">行為</a>
-        を必ずご確認ください。
-      </p>
-      <p class="sentence">
-        またブランド品でシリアルナンバー等がある場合はご記載ください。
-        <a href="#">偽ブランドの販売</a>
-        は犯罪であり処罰される可能性があります。
-      </p>
-      <p class="sentence">
-        また、出品をもちまして
-        <a href="#">加盟店規約</a>
-        に同意したことになります。
-      </p>
+      <%# /商品の詳細 %>
+      <%# GoogleMapの表示%>
+      <%= f.label :address, "検索" %>
+        <%= f.text_field :address, id: :address%>
+      <input type="button" value="検索" onclick="codeAddress()">
+      <div class="form">
+        <%= f.label :latitude %>
+          <%= f.hidden_field :latitude,:value =>"緯度", id: :latitude %>
+        <%= f.label :longitude %>
+         <%= f.hidden_field :longitude,:value =>"経度", id: :longitude %>
+      </div>
+      <div id='map'></div>
+      <style>
+        #map {
+          height: 600px;
+          width: 600px;
+        }
+      </style>
+      <script>
+        let map
+        let geocoder
+        let marker
+
+        function initMap() {
+          geocoder = new google.maps.Geocoder()
+          // デフォルト位置は東京
+          map = new google.maps.Map(document.getElementById('map'), {
+            center: {
+              lat: 35.681,
+              lng: 139.767
+            },
+            zoom: 12,
+          }); 
+        }
+        function codeAddress() {
+          let inputAddress = document.getElementById('address').value;
+         geocoder.geocode({
+            'address': inputAddress
+            
+          }, function (results, status) {
+            if (status == 'OK') {
+              map.setCenter(results[0].geometry.location);
+
+              var marker = new google.maps.Marker({
+                map: map,
+                position: results[0].geometry.location
+              });
+            }
+            else {
+              alert('Geocode was not successful for the following reason: ' + status);
+            }
+          });
+        }
+      </script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API'] %>&callback=initMap" async defer>
+      </script>
+      <%# /GoogleMapの表示%>
+      <%# 注意書き %>
+      <div class="caution">
+        <p class="sentence">
+          <a href="#">禁止されている投稿、</a>
+          を必ずご確認ください。
+        </p>
+      </div>
+      <%# /注意書き %>
+      <%# 下部ボタン %>
+      <div class="sell-btn-contents">
+        <%= f.submit "投稿する", class:"sell-btn" %>
+        <%=link_to 'もどる', root_path, class:"back-btn" %>
+      </div>
+      <%# /下部ボタン %>
+      </div>
     </div>
-    <%# /注意書き %>
-    <%# 下部ボタン %>
-    <div class="sell-btn-contents">
-      <%= f.submit "投稿する", class:"sell-btn" %>
-      <%=link_to 'もどる', root_path, class:"back-btn" %>
-    </div>
-    <%# /下部ボタン %>
-    </div>
-  </div>
   <% end %>
   <footer class="toilets-footer">
-    <ul class="menu">
-      <li><a href="#">プライバシーポリシー</a></li>
-      <li><a href="#">利用規約</a></li>
-      <li><a href="#">特定商取引に関する表記</a></li>
-    </ul>
     <div class="toilets-footer-logo">
-    <%= link_to image_tag('socialtoilet-logo.jpg' , size: '185x50'), root_path %>
+    <%= link_to image_tag('socialtoilet-logo.jpg' , size: '185x100'), root_path %>
     </div>
   </footer>
 </div>

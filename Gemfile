@@ -58,6 +58,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'active_hash'
+
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem "omniauth-rails_csrf_protection"
@@ -70,3 +71,10 @@ gem 'image_processing', '~> 1.2'
 gem 'ransack'
 
 gem 'rails-i18n'
+
+gem 'ransack'
+
+gem 'dotenv-rails'
+
+gem 'gmaps4rails'
+gem 'geocoder'
