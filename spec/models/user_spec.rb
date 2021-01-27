@@ -58,7 +58,8 @@ describe User, type: :model do
       it 'passwordが空では登録できない' do
         @user.password = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include("パスワードを入力してください", "パスワードには英字と数字の両方を含めて設定してください", "パスワード（確認用）とパスワードの入力が一致しません")
+        expect(@user.errors.full_messages).to include("パスワードを入力してください", "パスワードには英字と数字の両方を含めて設定してください",
+                                                      "パスワード（確認用）とパスワードの入力が一致しません")
       end
 
       it 'passwordが5文字以下では登録できない' do
