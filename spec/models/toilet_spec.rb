@@ -9,7 +9,6 @@ describe Toilet do
     context "投稿がうまくいくとき" do
       it "全ての項目が存在すれば登録できる" do
         expect(@toilet).to be_valid
-        expect(@toilet.images).to be_valid
       end
 
       it "nameが40文字で登録できる" do
