@@ -90,6 +90,24 @@ describe Toilet do
         expect(@toilet.errors.full_messages).to include("設備内容を選択してください")
       end
 
+      it "addressがない場合は登録できないこと" do
+        @toilet.address = ""
+        @toilet.valid?
+        expect(@toilet.errors.full_messages).to include("住所を入力してください")
+      end
+
+      it "latitudeがない場合は登録できないこと" do
+        @toilet.latitude = ""
+        @toilet.valid?
+        expect(@toilet.errors.full_messages).to include("緯度を入力してください")
+      end
+
+      it "longitudeがない場合は登録できないこと" do
+        @toilet.longitude = ""
+        @toilet.valid?
+        expect(@toilet.errors.full_messages).to include("経度を入力してください")
+      end
+      
       it "multi_idが1の場合は登録できないこと" do
         @toilet.multi_id = 1
         @toilet.valid?
