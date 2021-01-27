@@ -50,16 +50,23 @@
 
 # 使用技術
 * VScode
+* HTML/CSS
 * Ruby 2.6.5
 * Rails 6.0.0
 * JavaScript
 * mysql 5.6.50
 * Linux
 * Nginx(Web Sever)
-* Git/GitHub(pull request,Issue 等による擬似チーム開発)
+* Unicorn(Application Server)
+* Docker 20.10.0
+* docker-compose 1.27.4
+* CircleCI(CI/CD)
 * Capistrano
 * AWS EC2 (Amazon Linux2)/RDS(MariaDB)/S3/IAM
-* Google Cloud Platform(GoogleMapAPI)
+* AWS(ACM,Route53,ALB)
+* Google Cloud Platform(GoogleMapAPI),SNS認証
+* Git/GitHub(pull request,Issue 等による擬似チーム開発)
+
 # DB設計
 ## users テーブル
 
