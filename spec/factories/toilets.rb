@@ -7,7 +7,9 @@ FactoryBot.define do
     number_id          {2}
     multi_id           {2}
     text               {Faker::Lorem.sentence}
-
+    address            {"東京都渋谷区"}
+    latitude           {"35.661971"}
+    longitude          {"139.703795"}
     association :user
 
     after(:build) do |toilet|
