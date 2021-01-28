@@ -8,10 +8,10 @@
 トイレの情報、場所を投稿する
 
 # App URL
-[SocialToilet](https：：//www.social-toilet.com/)
+[SocialToilet](https://www.social-toilet.com/)
 
 # AWS構成図
-! [AWS構成図](awsmap.png)
+![AWS構成図](awsmap.png)
 
 # 利用方法
 ・トップページから新規登録もしくはログイン
