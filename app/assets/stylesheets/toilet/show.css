@@ -1,4 +1,9 @@
-/* 商品の概要 */
+/* スマホ表示時 */
+@media (max-width: 599px) {
+  p {
+    font-size: 20px
+  }
+}
 
 .toilet-show {
   background-color: #f8f8f8;
@@ -120,9 +125,6 @@
 .report-flag-icon {
   margin-right: 5px;
 }
-
-
-/* /商品の概要 */
 
 .comment-box {
   width: 40vw;

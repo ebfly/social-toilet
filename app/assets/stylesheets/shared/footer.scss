@@ -1,5 +1,9 @@
-/* 下部広告部分 */
-/* items/index.htmlの広告cssを所々使いまわしています。 */
+/* スマホ表示時 */
+@media (max-width: 599px) {
+  p {
+    font-size: 20px
+  }
+}
 
 .ad-footer-contents {
   width: 100vw;
@@ -25,9 +29,6 @@
   font-size: 3vh;
   line-height: 30px;
 }
-
-/* //下部広告部分 */
-
 .footer {
   width: 100vw;
   padding: 5vh 0;

@@ -1,3 +1,10 @@
+/* スマホ表示時 */
+@media (max-width: 599px) {
+  p {
+    font-size: 20px
+  }
+}
+
 .second-header {
   width: 100%;
   min-width: 800px;
