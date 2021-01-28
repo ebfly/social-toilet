@@ -7,11 +7,11 @@
 観光などで訪れる地域のトイレ事情を知りたい人や、育児中の親御様、快適にトイレを使いたい人に向けて
 トイレの情報、場所を投稿する
 
-# App URL
-[SocialToilet](https://www.social-toilet.com/)
+# App
+[SocialToiletへ遷移します](https://www.social-toilet.com/)
 
 # AWS構成図
-![AWS構成図](awsmap.png)
+[![Image from Gyazo](https://i.gyazo.com/0fa4923b6f4196ca54d5683c44ce4193.png)](https://gyazo.com/0fa4923b6f4196ca54d5683c44ce4193)
 
 # 利用方法
 ・トップページから新規登録もしくはログイン
