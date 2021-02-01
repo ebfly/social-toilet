@@ -11,7 +11,7 @@
 [SocialToiletへ遷移します](https://www.social-toilet.com/)
 
 # AWS構成図
-[![Image from Gyazo](https://i.gyazo.com/0fa4923b6f4196ca54d5683c44ce4193.png)](https://gyazo.com/0fa4923b6f4196ca54d5683c44ce4193)
+[![Image from Gyazo](https://i.gyazo.com/b3f8cdbdaf8ede5df47de2ef5b7526cb.png)](https://gyazo.com/b3f8cdbdaf8ede5df47de2ef5b7526cb)
 
 # 利用方法
 ・トップページから新規登録もしくはログイン
