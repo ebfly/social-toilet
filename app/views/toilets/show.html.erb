@@ -18,11 +18,9 @@
       </span>
     </div>
 
-    <% if current_user.id == @toilet.user_id %>
       <%= link_to '編集', edit_toilet_path(@toilet.id), method: :get, class: "toilet-edit-btn" %>
       <p class='or-text'>or</p>
       <%= link_to '削除',  toilet_path(@toilet.id), method: :delete, class:'toilet-destroy' %>
-    <% end %>
 
     <div class="toilet-explain-box">
       <span><%= @toilet.text %></span>
