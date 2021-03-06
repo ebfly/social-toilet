@@ -21,6 +21,4 @@ class Toilet < ApplicationRecord
   #各項目の選択が「---」の時は保存できない
   validates :prefecture_id, :category_id, :condition_id, :number_id, :multi_id,  
             numericality: { other_than: 1 , message: "を選択してください"}
-
-
 end
