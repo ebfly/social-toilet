@@ -8,7 +8,7 @@
 トイレの情報、場所を投稿する
 
 # App
-[SocialToiletへ遷移します](https://www.social-toilet.com/)※3/8現在エラーにより復旧作業中です。
+[SocialToiletへ遷移します](https://www.social-toilet.com/)※3/10現在エラーにより復旧作業中です。
 
 # AWS構成図
 [![Image from Gyazo](https://i.gyazo.com/b3f8cdbdaf8ede5df47de2ef5b7526cb.png)](https://gyazo.com/b3f8cdbdaf8ede5df47de2ef5b7526cb)
